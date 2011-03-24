@@ -36,8 +36,7 @@ public class NERServlet extends HttpServlet
         if (spacingStr == null || spacingStr.trim().equals(""))
             throw new ServletException("Invalid preserveSpacing setting.");
         //spacing = Boolean.valueOf(spacingStr).booleanValue();
-        spacingStr = spacingStr.trim().toLowerCase();
-        spacing = "true".equals(spacingStr);
+        spacing = spacingStr.trim().toLowerCase().equals("true");
         
         default_classifier = getServletConfig().getInitParameter("default-classifier");
         if (default_classifier == null || default_classifier.trim().equals(""))
@@ -100,20 +99,27 @@ public class NERServlet extends HttpServlet
             preserveSpacing = this.spacing;
         } else {
             //preserveSpacing = Boolean.getBoolean(preserveSpacingStr);
-            preserveSpacingStr = preserveSpacingStr.trim().toLowerCase();
-            preserveSpacing = "true".equals(preserveSpacingStr);
+            preserveSpacing = preserveSpacingStr.trim().toLowerCase().equals("true");
         }
         
         String classifier = req.getParameter("classifier");
         if (classifier == null || classifier.trim().equals("")) {
             classifier = this.default_classifier;
         }
+        AbstractSequenceClassifier tagger = ner.get(classifier);
 
         res.setContentType("text/plain");
         res.addHeader("classifier", classifier);
         res.addHeader("outputFormat", outputFormat);
         res.addHeader("preserveSpacing", String.valueOf(preserveSpacing));
         PrintWriter out = res.getWriter();
+
+        //entire blob of text
         out.print(ners.get(classifier).classifyToString(input, outputFormat, preserveSpacing));
+        
+        //sentence-by-sentence
+        /*for (String sentence: input.split("\n")) {
+            out.println(tagger.classifyToString(sentence, outputFormat, preserveSpacing));
+        }*/
     }
 }

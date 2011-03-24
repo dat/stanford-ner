@@ -29,14 +29,14 @@ war: init
 		-classpath $(SERVLET_API) \
 		src/edu/stanford/nlp/*/*.java src/edu/stanford/nlp/*/*/*.java \
 		src/com/ntrepid/tartan/*.java
-	cd tmp && jar -cfm ../stanford-ner.war ../src/edu/stanford/nlp/ie/crf/ner-manifest.txt * && cd ..
+	pushd tmp && jar -cfm ../stanford-ner.war ../src/edu/stanford/nlp/ie/crf/ner-manifest.txt * && popd
 
 jar: init
 	mkdir -p tmp/META-INF
 	cp extra/LICENSE.txt tmp/META-INF
 	$(JAVAC) $(JAVAFLAGS) -d tmp \
 		src/edu/stanford/nlp/*/*.java src/edu/stanford/nlp/*/*/*.java
-	cd tmp && jar -cfm ../stanford-ner.jar ../src/edu/stanford/nlp/ie/crf/ner-manifest.txt * && cd ..
+	pushd tmp && jar -cfm ../stanford-ner.jar ../src/edu/stanford/nlp/ie/crf/ner-manifest.txt * && popd
 
 clean:
 	rm -fR tmp *.war *.jar
