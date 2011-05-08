@@ -1,0 +1,17 @@
+edu.stanford.nlp.fsm
+edu.stanford.nlp.ie
+edu.stanford.nlp.ie.crf
+edu.stanford.nlp.ie.pascal
+edu.stanford.nlp.io
+edu.stanford.nlp.linalg
+edu.stanford.nlp.ling
+edu.stanford.nlp.math
+edu.stanford.nlp.maxent
+edu.stanford.nlp.objectbank
+edu.stanford.nlp.optimization
+edu.stanford.nlp.process
+edu.stanford.nlp.sequences
+edu.stanford.nlp.stats
+edu.stanford.nlp.trees
+edu.stanford.nlp.util
+edu.stanford.nlp.util.concurrent

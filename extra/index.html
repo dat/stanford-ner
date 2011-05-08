@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Stanford Named Entity Tagger</title>
+</head>
+<body>
+    <div id="Content">
+        <div id="Section">
+            <div id="ContentBody">
+                <h3>Stanford Named Entity Tagger</h3>
+                <FORM name="myform" METHOD="POST" ACTION="ner">
+                    <table>
+                        <tr><td>
+                                Classifier:
+                                <select name="classifier">
+                                    <option value="crf-3-all2008-distsim">crf-3-all2008-distsim</option>
+                                    <option value="crf-3-all2008">crf-3-all2008</option>
+                                    <option value="crf-4-conll-distsim">crf-4-conll-distsim</option>
+                                    <option value="crf-4-conll">crf-4-conll</option>
+                                </select>
+                        </td></tr>
+                        <tr><td>
+                                Output Format:
+                                <select name="outputFormat">
+                                    <option value="inlineXML">inlineXML</option>
+                                    <option value="xml">xml</option>
+                                    <option value="slashTags">slashTags</option>
+                                </select>
+                        </td></tr>
+                        <tr><td>
+                                Preserve Spacing:
+                                <select name="preserveSpacing">
+                                    <option value="true">yes</option>
+                                    <option value="false">no</option>
+                                </select>
+                        </td></tr>
+                        <tr><td colspan=2>
+                                <br>Please enter your text here:<br><br>
+                                <textarea valign=top name="input" rows=30 cols=100 wrap=virtual></textarea>
+                        </td></tr>
+                        <tr><td align=left>
+                                <input type="submit" name="Process" value="Process">
+                                <input type="reset" value="Clear">
+                        </td></tr>
+                    </table>
+                </FORM>
+            </div>
+        </div> 
+    </div>
+    <div id="Footer">
+        Copyright &copy; 2011, 
+        <a href="http://nlp.stanford.edu/projects/project-ner.shtml">Stanford University</a>
+        , All Rights Reserved.
+    </div>
+</body>
+</html>

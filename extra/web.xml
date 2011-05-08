@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <display-name>Stanford NER Tagger</display-name>
+    <description>
+    	This is a named entity recognizer based on Conditional Random Field.
+    </description>
+
+    <servlet>
+        <servlet-name>NERServlet</servlet-name>
+        <servlet-class>com.ntrepid.tartan.NERServlet</servlet-class>
+        <init-param>
+            <param-name>default-classifier</param-name>
+            <param-value>crf-3-all2008-distsim</param-value>
+        </init-param>
+        <init-param>
+            <param-name>classifiers</param-name>
+            <param-value>crf-3-all2008-distsim crf-3-all2008 crf-4-conll-distsim crf-4-conll</param-value>
+        </init-param>
+        <init-param>
+            <param-name>crf-3-all2008-distsim</param-name>
+            <param-value>/WEB-INF/resources/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</param-value>
+        </init-param>
+        <init-param>
+            <param-name>crf-3-all2008</param-name>
+            <param-value>/WEB-INF/resources/classifiers/ner-eng-ie.crf-3-all2008.ser.gz</param-value>
+        </init-param>
+        <init-param>
+            <param-name>crf-4-conll-distsim</param-name>
+            <param-value>/WEB-INF/resources/classifiers/ner-eng-ie.crf-4-conll-distsim.ser.gz</param-value>
+        </init-param>
+        <init-param>
+            <param-name>crf-4-conll</param-name>
+            <param-value>/WEB-INF/resources/classifiers/ner-eng-ie.crf-4-conll.ser.gz</param-value>
+        </init-param>
+        <init-param>
+            <param-name>outputFormat</param-name>
+            <param-value>inlineXML</param-value>
+        </init-param>
+        <init-param>
+            <param-name>preserveSpacing</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NERServlet</servlet-name>
+        <url-pattern>/ner</url-pattern>
+    </servlet-mapping>
+
+</web-app>
