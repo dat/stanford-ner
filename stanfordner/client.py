@@ -1,7 +1,9 @@
 #!/usr/bin/env python2.7
 
 """This module provides a Python wrapper for the Stanford NER
-running over the raw socket or HTTP request."""
+running over the raw socket or HTTP request.
+@author Dat Hoang
+@date March 2011"""
 
 
 import socket
@@ -35,7 +37,7 @@ def http_connection(host, port):
        c.close()
 
 
-#regex patterns of various tagging options (for parsing)
+#regex patterns for various tagging options for entity parsing
 SLASHTAGS_EPATTERN = re.compile(r'(.+?)/([A-Z]+)\s*')
 XML_EPATTERN = re.compile(r'<wi num=".+?" entity="(.+?)">(.+?)</wi>')
 INLINEXML_EPATTERN = re.compile(r'<([A-Z]+?)>(.+?)</\1>')
@@ -141,8 +143,8 @@ class StanfordNERHTTP(StanfordNER):
             try:
                 c.request('POST', self.location, params, headers)
                 response = c.getresponse()
-                result = response.read()
+                tagged_text = response.read()
             except httplib.HTTPException, e:
                 print "Failed to post HTTP request."
                 raise e
-        return result
+        return tagged_text

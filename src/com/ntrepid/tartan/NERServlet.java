@@ -10,6 +10,15 @@ import javax.servlet.http.*;
 import edu.stanford.nlp.ie.*;
 import edu.stanford.nlp.ie.crf.*;
 
+
+/**
+ *  This is a servlet interface to the CRFClassifier.
+ *
+ *  @author Dat Hoang 2011
+ *
+ **/
+
+
 public class NERServlet extends HttpServlet
 {
     private String format;

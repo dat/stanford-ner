@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#This serves as documentation for all other non-servlet deployment options.
+#Author: dth
+#Date: March 2011
+
 #settings
 MEMORY=700m
 STANFORD_NER=stanford-ner.jar

@@ -1,6 +1,8 @@
 #!/usr/bin/env python2.7
 
-"""Python wrapper for the Stanford NER."""
+"""Python wrapper for the Stanford NER.
+@author Dat Hoang
+@date March 2011"""
 
 
 from stanfordner.client import StanfordNERSocket, StanfordNERHTTP
@@ -10,5 +12,4 @@ __version__ = '0.1'
 
 __all__ = [
     'StanfordNERSocket', 'StanfordNERHTTP',
-    'StanfordNERException', 'InvalidOutputFormat'
-    ]    
+    'StanfordNERException', 'InvalidOutputFormat']
