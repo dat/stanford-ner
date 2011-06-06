@@ -106,7 +106,7 @@ public class NERServlet extends HttpServlet
         if (classifier == null || classifier.trim().equals("")) {
             classifier = this.default_classifier;
         }
-        AbstractSequenceClassifier tagger = ner.get(classifier);
+        AbstractSequenceClassifier tagger = ners.get(classifier);
 
         res.setContentType("text/plain");
         res.addHeader("classifier", classifier);
