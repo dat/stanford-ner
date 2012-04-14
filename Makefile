@@ -1,4 +1,3 @@
-# This is a rudimentary Makefile for building the CRF NER distribution.
 
 #Instructions:
 # - Execute 'make war' to make a war file for Tomcat deployment.
@@ -13,8 +12,7 @@ SERVLET_API = /opt/tomcat/common/lib/servlet-api.jar
 all: war
 
 init:
-	rm -fR tmp
-	mkdir tmp
+	mkdir -p tmp
 
 war: init
 	mkdir -p tmp/META-INF tmp/WEB-INF
@@ -27,7 +25,8 @@ war: init
  
 	$(JAVAC) $(JAVAFLAGS) -d tmp/WEB-INF/classes \
 		-classpath $(SERVLET_API) \
-		src/edu/stanford/nlp/*/*.java src/edu/stanford/nlp/*/*/*.java \
+		src/edu/stanford/nlp/*/*.java \
+        src/edu/stanford/nlp/*/*/*.java \
 		src/com/ntrepid/tartan/*.java
 	pushd tmp && jar -cfm ../stanford-ner.war ../src/edu/stanford/nlp/ie/crf/ner-manifest.txt * && popd
 
@@ -40,3 +39,6 @@ jar: init
 
 clean:
 	rm -fR tmp *.war *.jar
+
+.PHONY: all init war jar clean
+
