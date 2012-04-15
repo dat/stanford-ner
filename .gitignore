@@ -2,3 +2,5 @@
 *.war
 *.jar
 tmp
+doc
+

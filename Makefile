@@ -6,6 +6,7 @@
 
 JAVAC = javac
 JAVAFLAGS = -O
+JAVADOC = javadoc
 
 SERVLET_API = /opt/tomcat/common/lib/servlet-api.jar
 
@@ -13,6 +14,10 @@ all: war
 
 init:
 	mkdir -p tmp
+	mkdir -p doc
+
+doc: init
+	$(JAVADOC) -d doc -sourcepath src -subpackages com edu
 
 war: init
 	mkdir -p tmp/META-INF tmp/WEB-INF
@@ -39,6 +44,7 @@ jar: init
 
 clean:
 	rm -fR tmp *.war *.jar
+	rm -fR doc
 
-.PHONY: all init war jar clean
+.PHONY: all init doc war jar clean
 
