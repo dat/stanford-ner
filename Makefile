@@ -8,7 +8,9 @@ JAVAC = javac
 JAVAFLAGS = -O
 JAVADOC = javadoc
 
-SERVLET_API = /opt/tomcat/common/lib/servlet-api.jar
+SERVLET_API = extra/servlet-api.jar
+
+SHELL = /bin/bash
 
 all: war
 

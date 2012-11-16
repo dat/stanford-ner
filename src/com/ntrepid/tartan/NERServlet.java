@@ -63,11 +63,11 @@ public class NERServlet extends HttpServlet
                 }
                 asc = CRFClassifier.getClassifier(is);
             } catch (IOException e) {
-                throw new ServletException("IO problem reading classifier.");
+                throw new ServletException("IO problem reading classifier.", e);
             } catch (ClassCastException e) {
-                throw new ServletException("Classifier class casting problem.");
+                throw new ServletException("Classifier class casting problem.", e);
             } catch (ClassNotFoundException e) {
-                throw new ServletException("Clasifier class not found problem.");
+                throw new ServletException("Classifier class not found problem.", e);
             } finally {
                 try {
                     is.close();
@@ -114,9 +114,12 @@ public class NERServlet extends HttpServlet
         res.addHeader("preserveSpacing", String.valueOf(preserveSpacing));
         PrintWriter out = res.getWriter();
 
-        //entire blob of text
-        out.print(ners.get(classifier).classifyToString(input, outputFormat, preserveSpacing));
-        
+        if(outputFormat.equals("offsets")) {
+            out.print(ners.get(classifier).classifyToCharacterOffsets(input));
+        } else {
+            //entire blob of text
+            out.print(ners.get(classifier).classifyToString(input, outputFormat, preserveSpacing));
+        }
         //sentence-by-sentence
         /*for (String sentence: input.split("\n")) {
             out.println(tagger.classifyToString(sentence, outputFormat, preserveSpacing));
